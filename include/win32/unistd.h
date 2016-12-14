@@ -10,8 +10,10 @@
 #define srandom srand
 #define random rand
 
+#ifndef __GNUC__
 const int W_OK =2;
 const int R_OK =4;
+#endif
 
 #define access _access
 #define ftruncate _chsize

@@ -112,6 +112,7 @@ void* StartThreadedSocketConnection(void* v) {
 int ThreadedSocketConnection::CreatePipe()
 {
 	int tcp1, tcp2;
+	int iMode;
 	sockaddr_in name;
 	memset(&name, 0, sizeof(name));
 	name.sin_family = AF_INET;
@@ -147,7 +148,7 @@ int ThreadedSocketConnection::CreatePipe()
 	}
 	write_fd_ = tcp1;
 	read_fd_ = tcp2;
-	int iMode = 1;
+	iMode = 1;
 	ioctlsocket(read_fd_, FIONBIO, (u_long FAR*) &iMode);
 	return 0;
 clean:

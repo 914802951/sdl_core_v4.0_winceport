@@ -53,7 +53,9 @@
 #include <accctrl.h>
 #else
 #define __wtypes_h__
+#ifndef __GNUC__
 #include <accctrl.h>
+#endif
 #undef __wtypes_h__
 #endif
 #else

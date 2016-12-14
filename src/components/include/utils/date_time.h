@@ -43,7 +43,9 @@ typedef struct timeval TimevalStruct;
 
 #define CLOCK_REALTIME 0
 #define CLOCK_MONOTONIC 1
+#ifndef __GNUC__
 void clock_gettime(int i, timespec * tm);
+#endif
 #elif defined(OS_WINCE)
 #include <unistd.h>
 #include <pthread.h>

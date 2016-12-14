@@ -75,6 +75,7 @@ static time_t time(time_t* TimeOutPtr)
 #endif
 
 #if defined(OS_WIN32) || defined(OS_WINCE)
+#ifndef __GNUC__
 void clock_gettime(int i, timespec * tm)
 {
 	if (i == CLOCK_MONOTONIC) {
@@ -93,6 +94,7 @@ void clock_gettime(int i, timespec * tm)
         assert(false);
     }
 }
+#endif
 #elif defined(OS_MAC)
 void clock_gettime(int i, timespec * tm)
 {

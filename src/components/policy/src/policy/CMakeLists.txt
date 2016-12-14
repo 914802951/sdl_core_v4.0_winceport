@@ -94,6 +94,7 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   include_directories(${COMPONENTS_DIR}/utils/include/utils)
   list(APPEND LIBRARIES sqlite3)
   list(APPEND LIBRARIES pthreadVC2)
+  list(APPEND LIBRARIES shlwapi)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "WindowsCE")
   include_directories(${COMPONENTS_DIR}/utils/include/utils/sqlite_wrapper)
   list(APPEND LIBRARIES sqlite3)
@@ -126,7 +127,7 @@ endif()
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "Darwin" OR CMAKE_SYSTEM_NAME STREQUAL "WindowsCE")
 add_custom_target(copy_library_${target} ALL
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}/${library_name}
+    ${CMAKE_CURRENT_BINARY_DIR}/${library_name}
     ${copy_destination}
     DEPENDS ${target}
     COMMENT "Copying library ${library_name}")

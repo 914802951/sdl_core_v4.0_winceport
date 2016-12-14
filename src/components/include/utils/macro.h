@@ -120,8 +120,10 @@
 #define FINAL
 #endif
 #if defined(OS_WIN32) || defined(OS_WINCE)
+#ifndef __GNUC__
 #ifndef snprintf
 #define snprintf _snprintf
+#endif
 #endif
 #ifndef strcasecmp
 #define strcasecmp _stricmp

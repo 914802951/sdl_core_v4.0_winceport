@@ -38,6 +38,9 @@
 #include <signal.h>
 #include <errno.h>
 #include <unistd.h>
+#ifdef __GNUC__
+#include <winsock2.h>
+#endif
 #include <MSTcpIP.h>
 #else
 #include <arpa/inet.h>

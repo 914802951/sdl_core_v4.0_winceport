@@ -49,7 +49,7 @@ option(ENABLE_SANITIZE "Sanitize tool" OFF)
 option(ENABLE_SECURITY "Security Ford protocol protection" ON)
 option(ENABLE_HMI_PTU_DECRYPTION "Policy table update parsed by hmi" ON)
 
-option(BUILD_TARGET_LIBRARY    "build target as library" ON)
+option(BUILD_TARGET_LIBRARY    "build target as library" OFF)
 
 set(OS_TYPE_OPTION 	"$ENV{OS_TYPE}")
 set(DEBUG_OPTION 	"$ENV{DEBUG}")
@@ -201,8 +201,8 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   set (CMAKE_CXX_FLAGS_RELEASE "-s -O2") #It will be appended to CMAKE_CXX_FLAGS in release
   #set (CMAKE_EXE_LINKER_FLAGS "-stdlib=libc++")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-  set (CMAKE_CXX_FLAGS "/wd\"4819\" /wd\"4244\" /wd\"4390\" /wd\"4430\" /EHsc /bigobj")
-  set (CMAKE_C_FLAGS ${CMAKE_CXX_FLAGS})  
+  set (CMAKE_C_FLAGS "-Werror=return-type -Wuninitialized --coverage -Wa,-mbig-obj -m32")  
+  set (CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=gnu++0x -std=c++0x -O3")
   set (CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG") #It will be appended to CMAKE_CXX_FLAGS in release
 elseif(CMAKE_SYSTEM_NAME STREQUAL "WindowsCE")
   set (CMAKE_CXX_FLAGS "/wd\"4819\" /wd\"4244\" /wd\"4390\" /wd\"4996\"  /EHsc /bigobj /Z7 /GF")

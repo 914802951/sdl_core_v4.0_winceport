@@ -65,8 +65,13 @@ public:
 	static void fromUnicode(const wchar_string &wstrSrc, unsigned int nCodePage, std::string &strOut);
 	static void anyMultiToUtf8Multi(const std::string &strSrc, std::string &strOut);
 	static void utf8MultiToAnsiMulti(const std::string &strSrc, std::string &strOut);
+	#ifdef __GNUC__
+  static std::wstring StringToWString(const std::string &str);
+  static std::string WStringToString(const std::wstring &wstr);
+  #else
   static std::wstring Global::StringToWString(const std::string &str);
   static std::string Global::WStringToString(const std::wstring &wstr);
+  #endif
   static std::wstring RelativePathToAbsPath(const wchar_t* RelativePath);
   static std::string RelativePathToAbsPath(const char* RelativePath);
 #ifdef OS_WINCE
