@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+#ifndef __GNUC__
 #include "win32/apr_arch_atime.h"
+#else
+#include "apr_arch_atime.h"
+#endif
 #include "apr_time.h"
 #include "apr_general.h"
 #include "apr_lib.h"

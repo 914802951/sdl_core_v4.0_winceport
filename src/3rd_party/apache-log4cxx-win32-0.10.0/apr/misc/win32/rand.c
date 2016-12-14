@@ -21,6 +21,10 @@
 #include "apr_portable.h"
 #include "apr_arch_misc.h"
 
+#if defined(OS_WIN32) && defined(__GNUC__)
+#include <rpc.h>
+#endif
+
 
 APR_DECLARE(apr_status_t) apr_generate_random_bytes(unsigned char * buf,
                                                     apr_size_t length)

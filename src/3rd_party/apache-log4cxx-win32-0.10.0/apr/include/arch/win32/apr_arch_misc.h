@@ -155,7 +155,7 @@ FARPROC apr_load_dll_func(apr_dlltoken_e fnLib, char *fnName, int ordinal);
 #define APR_DECLARE_LATE_DLL_FUNC(lib, rettype, calltype, fn, ord, args, names) \
     typedef rettype (calltype *apr_winapi_fpt_##fn) args; \
     static apr_winapi_fpt_##fn apr_winapi_pfn_##fn = NULL; \
-    __inline rettype apr_winapi_##fn args \
+    static __inline rettype apr_winapi_##fn args \
     {   if (!apr_winapi_pfn_##fn) \
             apr_winapi_pfn_##fn = (apr_winapi_fpt_##fn) \
                                       apr_load_dll_func(lib, #fn, ord); \

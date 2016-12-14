@@ -35,7 +35,9 @@ struct atime_t {
  */
 #define APR_DELTA_EPOCH_IN_USEC   APR_TIME_C(11644473600000000);
 
-
+#ifdef __GNUC__
+static
+#endif
 __inline void FileTimeToAprTime(apr_time_t *result, FILETIME *input)
 {
     /* Convert FILETIME one 64 bit number so we can work with it. */
@@ -47,7 +49,9 @@ __inline void FileTimeToAprTime(apr_time_t *result, FILETIME *input)
     return;
 }
 
-
+#ifdef __GNUC__
+static
+#endif
 __inline void AprTimeToFileTime(LPFILETIME pft, apr_time_t t)
 {
     LONGLONG ll;

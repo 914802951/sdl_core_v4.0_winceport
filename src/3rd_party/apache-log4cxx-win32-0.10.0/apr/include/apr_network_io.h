@@ -21,6 +21,10 @@
  * @brief APR Network library
  */
 
+#ifdef __GNUC__
+#include <psdk_inc/_ip_types.h>
+#endif
+
 #include "apr.h"
 #include "apr_pools.h"
 #include "apr_file_io.h"

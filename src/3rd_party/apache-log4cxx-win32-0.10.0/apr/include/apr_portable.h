@@ -25,6 +25,10 @@
  * @brief APR Portability Routines
  */
 
+#ifdef __GNUC__
+#include <psdk_inc/_socket_types.h>
+#endif
+
 #include "apr.h"
 #include "apr_pools.h"
 #include "apr_thread_proc.h"

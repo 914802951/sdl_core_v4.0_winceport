@@ -13,10 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#ifndef __GNUC__
 #include "apr.h"
+#endif
 #if defined (OS_POSIX) || defined(OS_WIN32)
 #include <aclapi.h>
+#endif
+#ifdef __GNUC__
+#include "apr.h"
 #endif
 #include "apr_private.h"
 #include "apr_arch_file_io.h"
