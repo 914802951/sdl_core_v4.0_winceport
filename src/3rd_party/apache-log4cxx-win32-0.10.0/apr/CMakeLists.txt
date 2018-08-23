@@ -83,7 +83,7 @@ add_definitions(-DAPU_DECLARE_STATIC)
 
 add_library("apr-1" ${APR_SOURCES})
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-  target_link_libraries(${PROJECT}  ws2_32 odbc32 kernel32)
+  target_link_libraries(${PROJECT}  ws2_32 odbc32 kernel32 mswsock)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "WindowsCE")
   target_link_libraries(${PROJECT}  winsock coredll)
 else()
